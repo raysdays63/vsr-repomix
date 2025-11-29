@@ -1,0 +1,1888 @@
+s
+__pycache__/
+*.py[cod]
+*$py.class
+
+# C extensions
+*.so
+
+# Distribution / packaging
+.Python
+build/
+develop-eggs/
+dist/
+downloads/
+eggs/
+.eggs/
+parts/
+sdist/
+var/
+wheels/
+pip-wheel-metadata/
+share/python-wheels/
+*.egg-info/
+.installed.cfg
+*.egg
+MANIFEST
+
+# PyInstaller
+#  Usually these files are written by a python script from a template
+#  before PyInstaller builds the exe, so as to inject date/other infos into it.
+*.manifest
+*.spec
+
+# Installer logs
+pip-log.txt
+pip-delete-this-directory.txt
+
+# Unit test / coverage reports
+htmlcov/
+.tox/
+.nox/
+.coverage
+.coverage.*
+.cache
+nosetests.xml
+coverage.xml
+*.cover
+*.py,cover
+.hypothesis/
+.pytest_cache/
+pytestdebug.log
+
+# Translations
+*.mo
+*.pot
+
+# Django stuff:
+*.log
+local_settings.py
+db.sqlite3
+db.sqlite3-journal
+
+# Flask stuff:
+instance/
+.webassets-cache
+
+# Scrapy stuff:
+.scrapy
+
+# Sphinx documentation
+docs/_build/
+doc/_build/
+
+# PyBuilder
+target/
+
+# Jupyter Notebook
+.ipynb_checkpoints
+
+# IPython
+profile_default/
+ipython_config.py
+
+# pyenv
+.python-version
+
+# pipenv
+#   According to pypa/pipenv#598, it is recommended to include Pipfile.lock in version control.
+#   However, in case of collaboration, if having platform-specific dependencies or dependencies
+#   having no cross-platform support, pipenv may install dependencies that don't work, or not
+#   install all needed dependencies.
+#Pipfile.lock
+
+# poetry
+#poetry.lock
+
+# PEP 582; used by e.g. github.com/David-OConnor/pyflow
+__pypackages__/
+
+# Celery stuff
+celerybeat-schedule
+celerybeat.pid
+
+# SageMath parsed files
+*.sage.py
+
+# Environments
+# .env
+.env/
+.venv/
+env/
+venv/
+ENV/
+env.bak/
+venv.bak/
+pythonenv*
+
+# Spyder project settings
+.spyderproject
+.spyproject
+
+# Rope project settings
+.ropeproject
+
+# mkdocs documentation
+/site
+
+# mypy
+.mypy_cache/
+.dmypy.json
+dmypy.json
+
+# Pyre type checker
+.pyre/
+
+# pytype static type analyzer
+.pytype/
+
+# operating system-related files
+*.DS_Store #file properties cache/storage on macOS
+Thumbs.db #thumbnail cache on Windows
+
+# profiling data
+.prof
+
+
+### Windows ###
+# Windows thumbnail cache files
+Thumbs.db
+Thumbs.db:encryptable
+ehthumbs.db
+ehthumbs_vista.db
+
+# Dump file
+*.stackdump
+
+# Folder config file
+[Dd]esktop.ini
+
+# Recycle Bin used on file shares
+$RECYCLE.BIN/
+
+# Windows Installer files
+*.cab
+*.msi
+*.msix
+*.msm
+*.msp
+
+# Windows shortcuts
+*.lnk
+
+# End of https://www.toptal.com/developers/gitignore/api/intellij+all,python,pycharm+all,macos,windows
+/backend/models/V2/ch_rec/inference.pdiparams
+/backend/models/V4/ch_det/inference.pdiparams
+/backend/models/big-lama/models/best.ckpt
+/backend/models/sam/sam.pth
+/output/
+/backend/test.py
+/dylib/
+/settings.ini
+/test*.py
+/subtitle.ini
+*_no_sub.mp4
+/backend/ffmpeg/win_x64/ffmpeg.exe
+/test/pic_test/
+demo*.mp4
+out*.mp4
+test*.py
+test_*.mp4
+test*_no_sub*.mp4
+/test/coods/
+/local_test/
+/backend/models/video/ProPainter.pth
+/backend/models/big-lama/big-lama.pt
+/test/debug/
+/backend/tools/train/release_model/
+model.onnx
+</file>
+
+<file path="README_en.md">
+[简体中文](README.md) | English
+
+## Project Introduction
+
+![License](https://img.shields.io/badge/License-Apache%202-red.svg)
+![python version](https://img.shields.io/badge/Python-3.11+-blue.svg)
+![support os](https://img.shields.io/badge/OS-Windows/macOS/Linux-green.svg)
+
+Video-subtitle-remover (VSR) is an AI-based software that removes hardcoded subtitles from videos. It mainly implements the following functionalities:
+
+- **Lossless resolution**: Removes hardcoded subtitles from videos and generates files without subtitles.
+- Fills in the removed subtitle text area using a powerful AI algorithm model (non-adjacent pixel filling and mosaic removal).
+- Supports custom subtitle positions by only removing subtitles in the defined location (input position).
+- Supports automatic removal of all text throughout the entire video (without inputting a position).
+- Supports multi-selection of images for batch removal of watermark text.
+
+<p style="text-align:center;"><img src="https://github.com/YaoFANGUK/video-subtitle-remover/raw/main/design/demo.png" alt="demo.png"/></p>
+
+> Download the .zip package directly, extract, and run it. If it cannot run, follow the tutorial below to try installing the conda environment and running the source code.
+
+**Download Links:**
+
+Windows GPU Version v1.1.0 (GPU):
+
+- Baidu Cloud Disk: <a href="https://pan.baidu.com/s/1zR6CjRztmOGBbOkqK8R1Ng?pwd=vsr1">vsr_windows_gpu_v1.1.0.zip</a> Extraction Code: **vsr1**
+
+- Google Drive: <a href="https://drive.google.com/drive/folders/1NRgLNoHHOmdO4GxLhkPbHsYfMOB_3Elr?usp=sharing">vsr_windows_gpu_v1.1.0.zip</a>
+
+
+**Pre-built Package Comparison**:
+
+| Pre-built Package Name          | Python | Paddle | Torch | Environment                       | Supported Compute Capability Range |
+|----------------------------------|--------|--------|--------|-----------------------------------|------------------------------------|
+| `vse-windows-directml.7z`        | 3.12   | 3.0.0 | 2.4.1 | Windows without Nvidia GPU         | Universal                         |
+| `vse-windows-nvidia-cuda-11.8.7z`| 3.12   | 3.0.0 | 2.7.0 | CUDA 11.8                         | 3.5 – 8.9                          |
+| `vse-windows-nvidia-cuda-12.6.7z`| 3.12   | 3.0.0 | 2.7.0 | CUDA 12.6                         | 5.0 – 8.9                          |
+| `vse-windows-nvidia-cuda-12.8.7z`| 3.12   | 3.0.0 | 2.7.0 | CUDA 12.8                         | 5.0 – 9.0+                          |
+
+> NVIDIA provides a list of supported compute capabilities for each GPU model. You can refer to the following link: [CUDA GPUs](https://developer.nvidia.com/cuda-gpus) to check which CUDA version is compatible with your GPU.
+
+**Docker Versions:**
+```shell
+  # Nvidia 10, 20, 30 Series Graphics Cards
+  docker run -it --name vsr --gpus all eritpchy/video-subtitle-remover:1.1.1-cuda11.8 
+
+  # Nvidia 40 Series Graphics Cards
+  docker run -it --name vsr --gpus all eritpchy/video-subtitle-remover:1.1.1-cuda12.6 
+
+  # Nvidia 50 Series Graphics Cards
+  docker run -it --name vsr --gpus all eritpchy/video-subtitle-remover:1.1.1-cuda12.8 
+
+  # AMD / Intel Dedicated or Integrated Graphics
+  docker run -it --name vsr --gpus all eritpchy/video-subtitle-remover:1.1.1-directml 
+
+  # Demo video, input
+  /vsr/test/test.mp4
+  docker cp vsr:/vsr/test/test_no_sub.mp4 ./
+```
+
+## Demonstration
+
+- GUI:
+
+<p style="text-align:center;"><img src="https://github.com/YaoFANGUK/video-subtitle-remover/raw/main/design/demo2.gif" alt="demo2.gif"/></p>
+
+- <a href="https://b23.tv/guEbl9C">Click to view demo video👇</a>
+
+<p style="text-align:center;"><a href="https://b23.tv/guEbl9C"><img src="https://github.com/YaoFANGUK/video-subtitle-remover/raw/main/design/demo.gif" alt="demo.gif"/></a></p>
+
+## Source Code Usage Instructions
+
+#### 1. Install Python
+
+Please ensure that you have installed Python 3.12+.
+
+- Windows users can go to the [Python official website](https://www.python.org/downloads/windows/) to download and install Python.
+- MacOS users can install using Homebrew:
+  ```shell
+  brew install python@3.12
+  ```
+- Linux users can install via the package manager, such as on Ubuntu/Debian:
+  ```shell
+  sudo apt update && sudo apt install python3.12 python3.12-venv python3.12-dev
+  ```
+
+#### 2. Install Dependencies
+
+It is recommended to use a virtual environment to manage project dependencies to avoid conflicts with the system environment.
+
+(1) Create and activate the virtual environment:
+```shell
+python -m venv videoEnv
+```
+
+- Windows:
+```shell
+videoEnv\\Scripts\\activate
+```
+- MacOS/Linux:
+```shell
+source videoEnv/bin/activate
+```
+
+#### 3. Create and Activate Project Directory
+
+Change to the directory where your source code is located:
+```shell
+cd <source_code_directory>
+```
+> For example, if your source code is in the `tools` folder on the D drive and the folder name is `video-subtitle-remover`, use:
+> ```shell
+> cd D:/tools/video-subtitle-remover-main
+> ```
+
+#### 4. Install the Appropriate Runtime Environment
+
+This project supports two runtime modes: CUDA (NVIDIA GPU acceleration) and DirectML (AMD, Intel, and other GPUs/APUs).
+
+##### (1) CUDA (For NVIDIA GPU users)
+
+> Make sure your NVIDIA GPU driver supports the selected CUDA version.
+
+- Recommended CUDA 11.8, corresponding to cuDNN 8.6.0.
+
+- Install CUDA:
+  - Windows: [Download CUDA 11.8](https://developer.download.nvidia.com/compute/cuda/11.8.0/local_installers/cuda_11.8.0_522.06_windows.exe)
+  - Linux:
+    ```shell
+    wget https://developer.download.nvidia.com/compute/cuda/11.8.0/local_installers/cuda_11.8.0_520.61.05_linux.run
+    sudo sh cuda_11.8.0_520.61.05_linux.run
+    ```
+  - CUDA is not supported on MacOS.
+
+- Install cuDNN (CUDA 11.8 corresponds to cuDNN 8.6.0):
+  - [Windows cuDNN 8.6.0 Download](https://developer.download.nvidia.cn/compute/redist/cudnn/v8.6.0/local_installers/11.8/cudnn-windows-x86_64-8.6.0.163_cuda11-archive.zip)
+  - [Linux cuDNN 8.6.0 Download](https://developer.download.nvidia.cn/compute/redist/cudnn/v8.6.0/local_installers/11.8/cudnn-linux-x86_64-8.6.0.163_cuda11-archive.tar.xz)
+  - Follow the installation guide in the NVIDIA official documentation.
+
+- Install PaddlePaddle GPU version (CUDA 11.8):
+  ```shell
+  pip install paddlepaddle-gpu==3.0.0 -i https://www.paddlepaddle.org.cn/packages/stable/cu118/
+  ```
+
+- Install Torch GPU version (CUDA 11.8):
+  ```shell
+  pip install torch==2.7.0 torchvision==0.22.0 --index-url https://download.pytorch.org/whl/cu118
+  ```
+
+- Install other dependencies:
+  ```shell
+  pip install -r requirements.txt
+  ```
+
+##### (2) DirectML (For AMD, Intel, and other GPU/APU users)
+
+- Suitable for Windows devices with AMD/NVIDIA/Intel GPUs.
+- Install ONNX Runtime DirectML version:
+  ```shell
+  pip install paddlepaddle==3.0.0 -i https://www.paddlepaddle.org.cn/packages/stable/cpu/
+  pip install -r requirements.txt
+  pip install -r requirements_directml.txt
+  ```
+
+
+#### 4. Run the program
+
+- Run the graphical interface
+
+```shell
+python gui.py
+```
+
+- Run the command line version (CLI)
+
+```shell
+python ./backend/main.py
+```
+
+## Common Issues
+
+1. How to deal with slow removal speed
+
+You can greatly increase the removal speed by modifying the parameters in backend/config.py:
+
+```python
+MODE = InpaintMode.STTN  # Set to STTN algorithm
+STTN_SKIP_DETECTION = True # Skip subtitle detection
+```
+
+2. What to do if the video removal results are not satisfactory
+
+Modify the values in backend/config.py and try different removal algorithms. Here is an introduction to the algorithms:
+
+> - **InpaintMode.STTN** algorithm: Good for live-action videos and fast in speed, capable of skipping subtitle detection
+> - **InpaintMode.LAMA** algorithm: Best for images and effective for animated videos, moderate speed, unable to skip subtitle detection
+> - **InpaintMode.PROPAINTER** algorithm: Consumes a significant amount of VRAM, slower in speed, works better for videos with very intense movement
+
+- Using the STTN algorithm
+
+```python
+MODE = InpaintMode.STTN  # Set to STTN algorithm
+# Number of neighboring frames, increasing this will increase memory usage and improve the result
+STTN_NEIGHBOR_STRIDE = 10
+# Length of reference frames, increasing this will increase memory usage and improve the result
+STTN_REFERENCE_LENGTH = 10
+# Set the maximum number of frames processed simultaneously by the STTN algorithm, a larger value leads to slower processing but better results
+# Ensure that STTN_MAX_LOAD_NUM is greater than STTN_NEIGHBOR_STRIDE and STTN_REFERENCE_LENGTH
+STTN_MAX_LOAD_NUM = 30
+```
+- Using the LAMA algorithm
+
+```python
+MODE = InpaintMode.LAMA  # Set to LAMA algorithm
+LAMA_SUPER_FAST = False  # Ensure quality
+```
+
+
+3. CondaHTTPError
+
+Place the .condarc file from the project in the user directory (C:/Users/<your_username>). If the file already exists in the user directory, overwrite it.
+
+Solution: https://zhuanlan.zhihu.com/p/260034241
+
+4. 7z file extraction error
+
+Solution: Upgrade the 7-zip extraction program to the latest version.
+</file>
+
+<file path="requirements.txt">
+albumentations~=1.4.10
+filesplit==3.0.2
+opencv-python==4.11.0.86
+scikit-image==0.25.2
+imgaug==0.4.0
+pyclipper==1.3.0.post6
+lmdb==1.6.2
+PyYAML==6.0.2
+omegaconf==2.3.0
+tqdm==4.67.1
+PySimpleGUI-4-foss==4.60.4.1
+easydict==1.13
+scikit-learn==1.6.1
+pandas==2.2.3
+webdataset==0.2.111
+numpy==2.2.5
+protobuf==6.30.2
+av==14.3.0
+einops==0.8.1
+paddleocr==2.10.0
+paddle2onnx==1.3.1
+onnxruntime==1.20.1
+onnxruntime-directml==1.20.1;  sys_platform == 'win32'
+</file>
+
+<file path="gui.py">
+# -*- coding: utf-8 -*-
+"""
+@Author  : Fang Yao
+@Time    : 2023/4/1 6:07 下午
+@FileName: gui.py
+@desc: 字幕去除器图形化界面
+"""
+⋮----
+class SubtitleRemoverGUI
+⋮----
+def __init__(self)
+⋮----
+# 设置视频预览区域大小
+⋮----
+# 默认组件大小
+⋮----
+# 分辨率低于1080
+⋮----
+# 字幕提取器布局
+⋮----
+# 字幕提取其窗口
+⋮----
+# 视频路径
+⋮----
+# 视频cap
+⋮----
+# 视频的帧率
+⋮----
+# 视频的帧数
+⋮----
+# 视频的宽
+⋮----
+# 视频的高
+⋮----
+# 设置字幕区域高宽
+⋮----
+# 字幕提取器
+⋮----
+def run(self)
+⋮----
+# 创建布局
+⋮----
+# 创建窗口
+⋮----
+# 循环读取事件
+⋮----
+# 处理【打开】事件
+⋮----
+# 处理【滑动】事件
+⋮----
+# 处理【运行】事件
+⋮----
+# 如果关闭软件，退出
+⋮----
+# 更新进度条
+⋮----
+# 1) 打开修改字幕滑块区域按钮
+⋮----
+# 2) 打开【运行】、【打开】和【识别语言】按钮
+⋮----
+# 1) 关闭修改字幕滑块区域按钮
+⋮----
+# 2) 关闭【运行】、【打开】和【识别语言】按钮
+⋮----
+def _create_layout(self)
+⋮----
+"""
+        创建字幕提取器布局
+        """
+garbage = os.path.join(os.path.dirname(__file__), 'output')
+⋮----
+# 显示视频预览
+⋮----
+# 打开按钮 + 快进快退条
+⋮----
+# 输出区域
+⋮----
+# 运行按钮 + 进度条
+⋮----
+def _file_event_handler(self, event, values)
+⋮----
+"""
+        当点击打开按钮时：
+        1）打开视频文件，将画布显示视频帧
+        2）获取视频信息，初始化进度条滑块范围
+        """
+⋮----
+# 获取视频的帧数
+⋮----
+# 获取视频的高度
+⋮----
+# 获取视频的宽度
+⋮----
+# 获取视频的帧率
+⋮----
+# 调整视频帧大小，使播放器能够显示
+resized_frame = self._img_resize(frame)
+# resized_frame = cv2.resize(src=frame, dsize=(self.video_preview_width, self.video_preview_height))
+# 显示视频帧
+⋮----
+# 更新视频进度条滑块range
+⋮----
+# 预设字幕区域位置
+⋮----
+y = self.frame_height * y_p
+h = self.frame_height * h_p
+x = self.frame_width * x_p
+w = self.frame_width * w_p
+# 更新视频字幕位置滑块range
+# 更新Y-SLIDER范围
+⋮----
+# 更新Y-SLIDER默认值
+⋮----
+# 更新X-SLIDER范围
+⋮----
+# 更新X-SLIDER默认值
+⋮----
+# 更新Y-SLIDER-H范围
+⋮----
+# 更新Y-SLIDER-H默认值
+⋮----
+# 更新X-SLIDER-W范围
+⋮----
+# 更新X-SLIDER-W默认值
+⋮----
+def __disable_button(self)
+⋮----
+# 1) 禁止修改字幕滑块区域
+⋮----
+# 2) 禁止再次点击【运行】、【打开】和【识别语言】按钮
+⋮----
+def _run_event_handler(self, event, values)
+⋮----
+"""
+        当点击运行按钮时：
+        1) 禁止修改字幕滑块区域
+        2) 禁止再次点击【运行】和【打开】按钮
+        3) 设定字幕区域位置
+        """
+⋮----
+# 禁用按钮
+⋮----
+# 3) 设定字幕区域位置
+⋮----
+subtitle_area = (self.ymin, self.ymax, self.xmin, self.xmax)
+⋮----
+# 先判断每个视频的分辨率是否一致，一致的话设置相同的字幕区域，否则设置为None
+global_size = None
+⋮----
+temp_cap = cv2.VideoCapture(temp_video_path)
+⋮----
+global_size = (int(temp_cap.get(cv2.CAP_PROP_FRAME_WIDTH)), int(temp_cap.get(cv2.CAP_PROP_FRAME_HEIGHT)))
+⋮----
+temp_size = (int(temp_cap.get(cv2.CAP_PROP_FRAME_WIDTH)), int(temp_cap.get(cv2.CAP_PROP_FRAME_HEIGHT)))
+⋮----
+subtitle_area = None
+⋮----
+y_p = self.ymin / self.frame_height
+h_p = (self.ymax - self.ymin) / self.frame_height
+x_p = self.xmin / self.frame_width
+w_p = (self.xmax - self.xmin) / self.frame_width
+⋮----
+def task()
+⋮----
+video_path = self.video_paths.pop()
+⋮----
+def _slide_event_handler(self, event, values)
+⋮----
+"""
+        当滑动视频进度条/滑动字幕选择区域滑块时：
+        1) 判断视频是否存在，如果存在则显示对应的视频帧
+        2) 绘制rectangle
+        """
+⋮----
+# 判断是否时单张图片
+⋮----
+img = cv2.imread(self.video_path)
+⋮----
+# 画字幕框
+y = int(values['-Y-SLIDER-'])
+h = int(values['-Y-SLIDER-H-'])
+x = int(values['-X-SLIDER-'])
+w = int(values['-X-SLIDER-W-'])
+⋮----
+frame_no = int(values['-SLIDER-'])
+⋮----
+def _update_preview(self, frame, y_h_x_w)
+⋮----
+draw = cv2.rectangle(img=frame, pt1=(int(x), int(y)), pt2=(int(x) + int(w), int(y) + int(h)),
+⋮----
+resized_frame = self._img_resize(draw)
+⋮----
+def _img_resize(self, image)
+⋮----
+# 对长短不想等的图片，找到最长的一边
+longest_edge = height
+# 计算短边需要增加多少像素宽度使其与长边等长
+⋮----
+dw = longest_edge - width
+left = dw // 2
+right = dw - left
+⋮----
+# 给图像增加边界
+constant = cv2.copyMakeBorder(image, top, bottom, left, right, cv2.BORDER_CONSTANT, value=[0, 0, 0])
+⋮----
+def set_subtitle_config(self, y, h, x, w)
+⋮----
+# 写入配置文件
+⋮----
+def parse_subtitle_config(self)
+⋮----
+# 如果配置文件不存在，则写入配置文件
+⋮----
+config = configparser.ConfigParser()
+⋮----
+# 运行图形化界面
+subtitleRemoverGUI = SubtitleRemoverGUI()
+⋮----
+msg = traceback.format_exc()
+err_log_path = os.path.join(os.path.expanduser('~'), 'VSR-Error-Message.log')
+</file>
+
+<file path="backend/inpaint/sttn_inpaint.py">
+# 定义图像预处理方式
+_to_tensors = transforms.Compose([
+⋮----
+Stack(),  # 将图像堆叠为序列
+ToTorchFormatTensor()  # 将堆叠的图像转化为PyTorch张量
+⋮----
+class STTNInpaint
+⋮----
+def __init__(self)
+⋮----
+# 1. 创建InpaintGenerator模型实例并装载到选择的设备上
+⋮----
+# 2. 载入预训练模型的权重，转载模型的状态字典
+⋮----
+# 3. # 将模型设置为评估模式
+⋮----
+# 模型输入用的宽和高
+⋮----
+# 2. 设置相连帧数
+⋮----
+def __call__(self, input_frames: List[np.ndarray], input_mask: np.ndarray)
+⋮----
+"""
+        :param input_frames: 原视频帧
+        :param mask: 字幕区域mask
+        """
+⋮----
+mask = mask[:, :, None]
+⋮----
+H_ori = int(H_ori + 0.5)
+W_ori = int(W_ori + 0.5)
+# 确定去字幕的垂直高度部分
+split_h = int(W_ori * 3 / 16)
+inpaint_area = self.get_inpaint_area_by_mask(H_ori, split_h, mask)
+# 初始化帧存储变量
+# 高分辨率帧存储列表
+frames_hr = copy.deepcopy(input_frames)
+frames_scaled = {}  # 存放缩放后帧的字典
+comps = {}  # 存放补全后帧的字典
+# 存储最终的视频帧
+inpainted_frames = []
+⋮----
+frames_scaled[k] = []  # 为每个去除部分初始化一个列表
+⋮----
+# 读取并缩放帧
+⋮----
+image = frames_hr[j]
+# 对每个去除部分进行切割和缩放
+⋮----
+image_crop = image[inpaint_area[k][0]:inpaint_area[k][1], :, :]  # 切割
+image_resize = cv2.resize(image_crop, (self.model_input_width, self.model_input_height))  # 缩放
+frames_scaled[k].append(image_resize)  # 将缩放后的帧添加到对应列表
+⋮----
+# 处理每一个去除部分
+⋮----
+# 调用inpaint函数进行处理
+⋮----
+# 如果存在去除部分
+⋮----
+frame = frames_hr[j]  # 取出原始帧
+# 对于模式中的每一个段落
+⋮----
+comp = cv2.resize(comps[k][j], (W_ori, split_h))  # 将补全帧缩放回原大小
+comp = cv2.cvtColor(np.array(comp).astype(np.uint8), cv2.COLOR_BGR2RGB)  # 转换颜色空间
+# 获取遮罩区域并进行图像合成
+mask_area = mask[inpaint_area[k][0]:inpaint_area[k][1], :]  # 取出遮罩区域
+# 实现遮罩区域内的图像融合
+⋮----
+# 将最终帧添加到列表
+⋮----
+@staticmethod
+    def read_mask(path)
+⋮----
+img = cv2.imread(path, 0)
+# 转为binary mask
+⋮----
+img = img[:, :, None]
+⋮----
+def get_ref_index(self, neighbor_ids, length)
+⋮----
+"""
+        采样整个视频的参考帧
+        """
+# 初始化参考帧的索引列表
+ref_index = []
+# 在视频长度范围内根据ref_length逐步迭代
+⋮----
+# 如果当前帧不在近邻帧中
+⋮----
+# 将它添加到参考帧列表
+⋮----
+# 返回参考帧索引列表
+⋮----
+def inpaint(self, frames: List[np.ndarray])
+⋮----
+"""
+        使用STTN完成空洞填充（空洞即被遮罩的区域）
+        """
+frame_length = len(frames)
+# 对帧进行预处理转换为张量，并进行归一化
+feats = _to_tensors(frames).unsqueeze(0) * 2 - 1
+# 把特征张量转移到指定的设备（CPU或GPU）
+feats = feats.to(self.device)
+# 初始化一个与视频长度相同的列表，用于存储处理完成的帧
+comp_frames = [None] * frame_length
+# 关闭梯度计算，用于推理阶段节省内存并加速
+⋮----
+# 将处理好的帧通过编码器，产生特征表示
+feats = self.model.encoder(feats.view(frame_length, 3, self.model_input_height, self.model_input_width))
+# 获取特征维度信息
+⋮----
+# 调整特征形状以匹配模型的期望输入
+feats = feats.view(1, frame_length, c, feat_h, feat_w)
+# 获取重绘区域
+# 在设定的邻居帧步幅内循环处理视频
+⋮----
+# 计算邻近帧的ID
+neighbor_ids = [i for i in range(max(0, f - self.neighbor_stride), min(frame_length, f + self.neighbor_stride + 1))]
+# 获取参考帧的索引
+ref_ids = self.get_ref_index(neighbor_ids, frame_length)
+# 同样关闭梯度计算
+⋮----
+# 通过模型推断特征并传递给解码器以生成完成的帧
+pred_feat = self.model.infer(feats[0, neighbor_ids + ref_ids, :, :, :])
+# 将预测的特征通过解码器生成图片，并应用激活函数tanh，然后分离出张量
+pred_img = torch.tanh(self.model.decoder(pred_feat[:len(neighbor_ids), :, :, :])).detach()
+# 将结果张量重新缩放到0到255的范围内（图像像素值）
+pred_img = (pred_img + 1) / 2
+# 将张量移动回CPU并转为NumPy数组
+pred_img = pred_img.cpu().permute(0, 2, 3, 1).numpy() * 255
+# 遍历邻近帧
+⋮----
+idx = neighbor_ids[i]
+# 将预测的图片转换为无符号8位整数格式
+img = np.array(pred_img[i]).astype(np.uint8)
+⋮----
+# 如果该位置为空，则赋值为新计算出的图片
+⋮----
+# 如果此位置之前已有图片，则将新旧图片混合以提高质量
+⋮----
+# 返回处理完成的帧序列
+⋮----
+@staticmethod
+    def get_inpaint_area_by_mask(H, h, mask)
+⋮----
+"""
+        获取字幕去除区域，根据mask来确定需要填补的区域和高度
+        """
+# 存储绘画区域的列表
+inpaint_area = []
+# 从视频底部的字幕位置开始，假设字幕通常位于底部
+to_H = from_H = H
+# 从底部向上遍历遮罩
+⋮----
+# 如果下一段会超出顶端，则从顶端开始
+from_H = 0
+to_H = h
+⋮----
+# 确定段的上边界
+from_H = to_H - h
+# 检查当前段落是否包含遮罩像素
+⋮----
+# 如果不是第一个段落，向下移动以确保没遗漏遮罩区域
+⋮----
+move = 0
+⋮----
+# 确保没有越过底部
+⋮----
+# 将该段落添加到列表中
+⋮----
+# 移动到下一个段落
+⋮----
+return inpaint_area  # 返回绘画区域列表
+⋮----
+@staticmethod
+    def get_inpaint_area_by_selection(input_sub_area, mask)
+⋮----
+interval_size = 135
+# 存储结果的列表
+⋮----
+# 计算并存储标准区间
+⋮----
+# 检查最后一个区间是否达到了最大值
+⋮----
+# 如果没有，则创建一个新的区间，开始于最后一个区间的结束，结束于扩大后的值
+⋮----
+class STTNVideoInpaint
+⋮----
+def read_frame_info_from_video(self)
+⋮----
+# 使用opencv读取视频
+reader = cv2.VideoCapture(self.video_path)
+# 获取视频的宽度, 高度, 帧率和帧数信息并存储在frame_info字典中
+frame_info = {
+⋮----
+'W_ori': int(reader.get(cv2.CAP_PROP_FRAME_WIDTH) + 0.5),  # 视频的原始宽度
+'H_ori': int(reader.get(cv2.CAP_PROP_FRAME_HEIGHT) + 0.5),  # 视频的原始高度
+'fps': reader.get(cv2.CAP_PROP_FPS),  # 视频的帧率
+'len': int(reader.get(cv2.CAP_PROP_FRAME_COUNT) + 0.5)  # 视频的总帧数
+⋮----
+# 返回视频读取对象、帧信息和视频写入对象
+⋮----
+def __init__(self, video_path, mask_path=None, clip_gap=None)
+⋮----
+# STTNInpaint视频修复实例初始化
+⋮----
+# 视频和掩码路径
+⋮----
+# 设置输出视频文件的路径
+⋮----
+# 配置可在一次处理中加载的最大帧数
+⋮----
+def __call__(self, input_mask=None, input_sub_remover=None, tbar=None)
+⋮----
+reader = None
+writer = None
+⋮----
+# 读取视频帧信息
+⋮----
+writer = input_sub_remover.video_writer
+⋮----
+# 创建视频写入对象，用于输出修复后的视频
+writer = cv2.VideoWriter(self.video_out_path, cv2.VideoWriter_fourcc(*"mp4v"), frame_info['fps'], (frame_info['W_ori'], frame_info['H_ori']))
+⋮----
+# 计算需要迭代修复视频的次数
+rec_time = frame_info['len'] // self.clip_gap if frame_info['len'] % self.clip_gap == 0 else frame_info['len'] // self.clip_gap + 1
+# 计算分割高度，用于确定修复区域的大小
+split_h = int(frame_info['W_ori'] * 3 / 16)
+⋮----
+# 读取掩码
+mask = self.sttn_inpaint.read_mask(self.mask_path)
+⋮----
+# 得到修复区域位置
+inpaint_area = self.sttn_inpaint.get_inpaint_area_by_mask(frame_info['H_ori'], split_h, mask)
+⋮----
+# 遍历每一次的迭代次数
+⋮----
+start_f = i * self.clip_gap  # 起始帧位置
+end_f = min((i + 1) * self.clip_gap, frame_info['len'])  # 结束帧位置
+⋮----
+frames_hr = []  # 高分辨率帧列表
+frames = {}  # 帧字典，用于存储裁剪后的图像
+comps = {}  # 组合字典，用于存储修复后的图像
+⋮----
+# 初始化帧字典
+⋮----
+# 读取和修复高分辨率帧
+valid_frames_count = 0
+⋮----
+# 裁剪、缩放并添加到帧字典
+image_crop = image[inpaint_area[k][0]:inpaint_area[k][1], :, :]
+image_resize = cv2.resize(image_crop, (self.sttn_inpaint.model_input_width, self.sttn_inpaint.model_input_height))
+⋮----
+# 如果没有读取到有效帧，则跳过当前迭代
+⋮----
+# 对每个修复区域运行修复
+⋮----
+if len(frames[k]) > 0:  # 确保有帧可以处理
+⋮----
+# 如果有要修复的区域
+⋮----
+original_frame = copy.deepcopy(frames_hr[j])
+⋮----
+original_frame = None
+⋮----
+frame = frames_hr[j]
+⋮----
+if j < len(comps[k]):  # 确保索引有效
+# 将修复的图像重新扩展到原始分辨率，并融合到原始帧
+comp = cv2.resize(comps[k][j], (frame_info['W_ori'], split_h))
+comp = cv2.cvtColor(np.array(comp).astype(np.uint8), cv2.COLOR_BGR2RGB)
+mask_area = mask[inpaint_area[k][0]:inpaint_area[k][1], :]
+⋮----
+# 不抛出异常，允许程序继续执行
+⋮----
+mask_path = '../../test/test.png'
+video_path = '../../test/test.mp4'
+# 记录开始时间
+start = time.time()
+sttn_video_inpaint = STTNVideoInpaint(video_path, mask_path, clip_gap=config.STTN_MAX_LOAD_NUM)
+</file>
+
+<file path="backend/config.py">
+# 项目版本号
+VERSION = "1.1.1"
+# ×××××××××××××××××××× [不要改] start ××××××××××××××××××××
+logging.disable(logging.DEBUG)  # 关闭DEBUG日志的打印
+logging.disable(logging.WARNING)  # 关闭WARNING日志的打印
+⋮----
+device = torch_directml.device(torch_directml.default_device())
+USE_DML = True
+⋮----
+USE_DML = False
+device = torch.device("cuda:0" if torch.cuda.is_available() else "cpu")
+BASE_DIR = os.path.dirname(os.path.abspath(__file__))
+LAMA_MODEL_PATH = os.path.join(BASE_DIR, 'models', 'big-lama')
+STTN_MODEL_PATH = os.path.join(BASE_DIR, 'models', 'sttn', 'infer_model.pth')
+VIDEO_INPAINT_MODEL_PATH = os.path.join(BASE_DIR, 'models', 'video')
+MODEL_VERSION = 'V4'
+DET_MODEL_BASE = os.path.join(BASE_DIR, 'models')
+DET_MODEL_PATH = os.path.join(DET_MODEL_BASE, MODEL_VERSION, 'ch_det')
+⋮----
+# 查看该路径下是否有模型完整文件，没有的话合并小文件生成完整文件
+⋮----
+fs = Filesplit()
+⋮----
+# 指定ffmpeg可执行程序路径
+sys_str = platform.system()
+⋮----
+ffmpeg_bin = os.path.join('win_x64', 'ffmpeg.exe')
+⋮----
+ffmpeg_bin = os.path.join('linux_x64', 'ffmpeg')
+⋮----
+ffmpeg_bin = os.path.join('macos', 'ffmpeg')
+FFMPEG_PATH = os.path.join(BASE_DIR, '', 'ffmpeg', ffmpeg_bin)
+⋮----
+# 将ffmpeg添加可执行权限
+⋮----
+# 是否使用ONNX(DirectML/AMD/Intel)
+ONNX_PROVIDERS = []
+available_providers = ort.get_available_providers()
+⋮----
+"DmlExecutionProvider",         # DirectML，适用于 Windows GPU
+"ROCMExecutionProvider",        # AMD ROCm
+"MIGraphXExecutionProvider",    # AMD MIGraphX
+"VitisAIExecutionProvider",     # AMD VitisAI，适用于 RyzenAI & Windows, 实测和DirectML性能似乎差不多
+"OpenVINOExecutionProvider",    # Intel GPU
+"MetalExecutionProvider",       # Apple macOS
+"CoreMLExecutionProvider",      # Apple macOS
+"CUDAExecutionProvider",        # Nvidia GPU
+⋮----
+# ×××××××××××××××××××× [不要改] end ××××××××××××××××××××
+⋮----
+@unique
+class InpaintMode(Enum)
+⋮----
+"""
+    图像重绘算法枚举
+    """
+STTN = 'sttn'
+LAMA = 'lama'
+PROPAINTER = 'propainter'
+⋮----
+# ×××××××××××××××××××× [可以改] start ××××××××××××××××××××
+# 是否使用h264编码，如果需要安卓手机分享生成的视频，请打开该选项
+USE_H264 = True
+⋮----
+# ×××××××××× 通用设置 start ××××××××××
+"""
+MODE可选算法类型
+- InpaintMode.STTN 算法：对于真人视频效果较好，速度快，可以跳过字幕检测
+- InpaintMode.LAMA 算法：对于动画类视频效果好，速度一般，不可以跳过字幕检测
+- InpaintMode.PROPAINTER 算法： 需要消耗大量显存，速度较慢，对运动非常剧烈的视频效果较好
+"""
+# 【设置inpaint算法】
+MODE = InpaintMode.STTN
+# 【设置像素点偏差】
+# 用于判断是不是非字幕区域(一般认为字幕文本框的长度是要大于宽度的，如果字幕框的高大于宽，且大于的幅度超过指定像素点大小，则认为是错误检测)
+THRESHOLD_HEIGHT_WIDTH_DIFFERENCE = 10
+# 用于放大mask大小，防止自动检测的文本框过小，inpaint阶段出现文字边，有残留
+SUBTITLE_AREA_DEVIATION_PIXEL = 20
+# 同于判断两个文本框是否为同一行字幕，高度差距指定像素点以内认为是同一行
+THRESHOLD_HEIGHT_DIFFERENCE = 20
+# 用于判断两个字幕文本的矩形框是否相似，如果X轴和Y轴偏差都在指定阈值内，则认为时同一个文本框
+PIXEL_TOLERANCE_Y = 20  # 允许检测框纵向偏差的像素点数
+PIXEL_TOLERANCE_X = 20  # 允许检测框横向偏差的像素点数
+# ×××××××××× 通用设置 end ××××××××××
+⋮----
+# ×××××××××× InpaintMode.STTN算法设置 start ××××××××××
+# 以下参数仅适用STTN算法时，才生效
+"""
+1. STTN_SKIP_DETECTION
+含义：是否使用跳过检测
+效果：设置为True跳过字幕检测，会省去很大时间，但是可能误伤无字幕的视频帧或者会导致去除的字幕漏了
+
+2. STTN_NEIGHBOR_STRIDE
+含义：相邻帧数步长, 如果需要为第50帧填充缺失的区域，STTN_NEIGHBOR_STRIDE=5，那么算法会使用第45帧、第40帧等作为参照。
+效果：用于控制参考帧选择的密度，较大的步长意味着使用更少、更分散的参考帧，较小的步长意味着使用更多、更集中的参考帧。
+
+3. STTN_REFERENCE_LENGTH
+含义：参数帧数量，STTN算法会查看每个待修复帧的前后若干帧来获得用于修复的上下文信息
+效果：调大会增加显存占用，处理效果变好，但是处理速度变慢
+
+4. STTN_MAX_LOAD_NUM
+含义：STTN算法每次最多加载的视频帧数量
+效果：设置越大速度越慢，但效果越好
+注意：要保证STTN_MAX_LOAD_NUM大于STTN_NEIGHBOR_STRIDE和STTN_REFERENCE_LENGTH
+"""
+STTN_SKIP_DETECTION = True
+# 参考帧步长
+STTN_NEIGHBOR_STRIDE = 5
+# 参考帧长度（数量）
+STTN_REFERENCE_LENGTH = 10
+# 设置STTN算法最大同时处理的帧数量
+STTN_MAX_LOAD_NUM = 50
+⋮----
+STTN_MAX_LOAD_NUM = STTN_REFERENCE_LENGTH * STTN_NEIGHBOR_STRIDE
+# ×××××××××× InpaintMode.STTN算法设置 end ××××××××××
+⋮----
+# ×××××××××× InpaintMode.PROPAINTER算法设置 start ××××××××××
+# 【根据自己的GPU显存大小设置】最大同时处理的图片数量，设置越大处理效果越好，但是要求显存越高
+# 1280x720p视频设置80需要25G显存，设置50需要19G显存
+# 720x480p视频设置80需要8G显存，设置50需要7G显存
+PROPAINTER_MAX_LOAD_NUM = 70
+# ×××××××××× InpaintMode.PROPAINTER算法设置 end ××××××××××
+⋮----
+# ×××××××××× InpaintMode.LAMA算法设置 start ××××××××××
+# 是否开启极速模式，开启后不保证inpaint效果，仅仅对包含文本的区域文本进行去除
+LAMA_SUPER_FAST = False
+# ×××××××××× InpaintMode.LAMA算法设置 end ××××××××××
+# ×××××××××××××××××××× [可以改] end ××××××××××××××××××××
+</file>
+
+<file path="backend/main.py">
+class SubtitleDetect
+⋮----
+"""
+    文本框检测类，用于检测视频帧中是否存在文本框
+    """
+⋮----
+def __init__(self, video_path, sub_area=None)
+⋮----
+@cached_property
+    def text_detector(self)
+⋮----
+# 获取参数对象
+⋮----
+args = utility.parse_args()
+⋮----
+def detect_subtitle(self, img)
+⋮----
+@staticmethod
+    def get_coordinates(dt_box)
+⋮----
+"""
+        从返回的检测框中获取坐标
+        :param dt_box 检测框返回结果
+        :return list 坐标点列表
+        """
+coordinate_list = list()
+⋮----
+i = list(i)
+⋮----
+xmin = max(x1, x4)
+xmax = min(x2, x3)
+ymin = max(y1, y2)
+ymax = min(y3, y4)
+⋮----
+def find_subtitle_frame_no(self, sub_remover=None)
+⋮----
+video_cap = cv2.VideoCapture(self.video_path)
+frame_count = video_cap.get(cv2.CAP_PROP_FRAME_COUNT)
+tbar = tqdm(total=int(frame_count), unit='frame', position=0, file=sys.__stdout__, desc='Subtitle Finding')
+current_frame_no = 0
+subtitle_frame_no_box_dict = {}
+⋮----
+# 如果读取视频帧失败（视频读到最后一帧）
+⋮----
+# 读取视频帧成功
+⋮----
+coordinate_list = self.get_coordinates(dt_boxes.tolist())
+⋮----
+temp_list = []
+⋮----
+subtitle_frame_no_box_dict = self.unify_regions(subtitle_frame_no_box_dict)
+# if config.UNITE_COORDINATES:
+#     subtitle_frame_no_box_dict = self.get_subtitle_frame_no_box_dict_with_united_coordinates(subtitle_frame_no_box_dict)
+#     if sub_remover is not None:
+#         try:
+#             # 当帧数大于1时，说明并非图片或单帧
+#             if sub_remover.frame_count > 1:
+#                 subtitle_frame_no_box_dict = self.filter_mistake_sub_area(subtitle_frame_no_box_dict,
+#                                                                           sub_remover.fps)
+#         except Exception:
+#             pass
+#     subtitle_frame_no_box_dict = self.prevent_missed_detection(subtitle_frame_no_box_dict)
+⋮----
+new_subtitle_frame_no_box_dict = dict()
+⋮----
+def convertToOnnxModelIfNeeded(self, model_dir, model_filename="inference.pdmodel", params_filename="inference.pdiparams", opset_version=14)
+⋮----
+"""Converts a Paddle model to ONNX if ONNX providers are available and the model does not already exist."""
+⋮----
+onnx_model_path = os.path.join(model_dir, "model.onnx")
+⋮----
+model_file = os.path.join(model_dir, model_filename)
+params_file = os.path.join(model_dir, params_filename) if params_filename else ""
+⋮----
+# Ensure the target directory exists
+⋮----
+# Convert and save the model
+onnx_model = paddle2onnx.export(
+⋮----
+@staticmethod
+    def split_range_by_scene(intervals, points)
+⋮----
+# 确保离散值列表是有序的
+⋮----
+# 用于存储结果区间的列表
+result_intervals = []
+# 遍历区间
+⋮----
+# 在当前区间内的点
+current_points = [p for p in points if start <= p <= end]
+⋮----
+# 遍历当前区间内的离散点
+⋮----
+# 如果当前离散点不是区间的起始点，添加从区间开始到离散点前一个数字的区间
+⋮----
+# 更新区间开始为当前离散点
+start = p
+# 添加从最后一个离散点或区间开始到区间结束的区间
+⋮----
+# 输出结果
+⋮----
+@staticmethod
+    def get_scene_div_frame_no(v_path)
+⋮----
+"""
+        获取发生场景切换的帧号
+        """
+scene_div_frame_no_list = []
+scene_list = scene_detect(v_path, ContentDetector())
+⋮----
+@staticmethod
+    def are_similar(region1, region2)
+⋮----
+"""判断两个区域是否相似。"""
+⋮----
+def unify_regions(self, raw_regions)
+⋮----
+"""将连续相似的区域统一，保持列表结构。"""
+⋮----
+keys = sorted(raw_regions.keys())  # 对键进行排序以确保它们是连续的
+unified_regions = {}
+⋮----
+# 初始化
+last_key = keys[0]
+unify_value_map = {last_key: raw_regions[last_key]}
+⋮----
+current_regions = raw_regions[key]
+⋮----
+# 新增一个列表来存放匹配过的标准区间
+new_unify_values = []
+⋮----
+last_standard_region = unify_value_map[last_key][idx] if idx < len(unify_value_map[last_key]) else None
+⋮----
+# 如果当前的区间与前一个键的对应区间相似，我们统一它们
+⋮----
+# 更新unify_value_map为最新的区间值
+⋮----
+last_key = key
+⋮----
+# 将最终统一后的结果传递给unified_regions
+⋮----
+@staticmethod
+    def find_continuous_ranges(subtitle_frame_no_box_dict)
+⋮----
+"""
+        获取字幕出现的起始帧号与结束帧号
+        """
+numbers = sorted(list(subtitle_frame_no_box_dict.keys()))
+ranges = []
+start = numbers[0]  # 初始区间开始值
+⋮----
+# 如果当前数字与前一个数字间隔超过1，
+# 则上一个区间结束，记录当前区间的开始与结束
+⋮----
+end = numbers[i - 1]  # 则该数字是当前连续区间的终点
+⋮----
+start = numbers[i]  # 开始下一个连续区间
+# 添加最后一个区间
+⋮----
+@staticmethod
+    def find_continuous_ranges_with_same_mask(subtitle_frame_no_box_dict)
+⋮----
+# 如果当前帧号与前一个帧号间隔超过1，
+⋮----
+# 如果当前帧号与前一个帧号间隔为1，且当前帧号对应的坐标点与上一帧号对应的坐标点不一致
+# 记录当前区间的开始与结束
+⋮----
+@staticmethod
+    def sub_area_to_polygon(sub_area)
+⋮----
+"""
+        xmin, xmax, ymin, ymax = sub_area
+        """
+s_xmin = sub_area[0]
+s_xmax = sub_area[1]
+s_ymin = sub_area[2]
+s_ymax = sub_area[3]
+⋮----
+@staticmethod
+    def expand_and_merge_intervals(intervals, expand_size=config.STTN_NEIGHBOR_STRIDE*config.STTN_REFERENCE_LENGTH, max_length=config.STTN_MAX_LOAD_NUM)
+⋮----
+# 初始化输出区间列表
+expanded_intervals = []
+⋮----
+# 对每个原始区间进行扩展
+⋮----
+# 扩展至至少 'expand_size' 个单位，但不超过 'max_length' 个单位
+expansion_amount = max(expand_size - (end - start + 1), 0)
+⋮----
+# 在保证包含原区间的前提下尽可能平分前后扩展量
+expand_start = max(start - expansion_amount // 2, 1)  # 确保起始点不小于1
+expand_end = end + expansion_amount // 2
+⋮----
+# 如果扩展后的区间超出了最大长度，进行调整
+⋮----
+expand_end = expand_start + max_length - 1
+⋮----
+# 对于单点的处理，需额外保证有至少 'expand_size' 长度
+⋮----
+expand_end = expand_start + expand_size - 1
+⋮----
+# 检查与前一个区间是否有重叠并进行相应的合并
+⋮----
+expand_start = previous_start
+expand_end = max(expand_end, previous_end)
+⋮----
+# 添加扩展后的区间至结果列表
+⋮----
+@staticmethod
+    def filter_and_merge_intervals(intervals, target_length=config.STTN_REFERENCE_LENGTH)
+⋮----
+"""
+        合并传入的字幕起始区间，确保区间大小最低为STTN_REFERENCE_LENGTH
+        """
+expanded = []
+# 首先单独处理单点区间以扩展它们
+⋮----
+if start == end:  # 单点区间
+# 扩展到接近的目标长度，但保证前后不重叠
+prev_end = expanded[-1][1] if expanded else float('-inf')
+next_start = float('inf')
+# 查找下一个区间的起始点
+⋮----
+next_start = ns
+⋮----
+# 确定新的扩展起点和终点
+new_start = max(start - (target_length - 1) // 2, prev_end + 1)
+new_end = min(start + (target_length - 1) // 2, next_start - 1)
+# 如果新的扩展终点在起点前面，说明没有足够空间来进行扩展
+⋮----
+new_start, new_end = start, start  # 保持原样
+⋮----
+# 非单点区间直接保留，稍后处理任何可能的重叠
+⋮----
+# 排序以合并那些因扩展导致重叠的区间
+⋮----
+# 合并重叠的区间，但仅当它们之间真正重叠且小于目标长度时
+merged = [expanded[0]]
+⋮----
+# 检查是否重叠
+⋮----
+# 需要合并
+merged[-1] = (last_start, max(last_end, end))  # 合并区间
+⋮----
+# 相邻区间也需要合并的场景
+⋮----
+# 如果没有重叠且都大于目标长度，则直接保留
+⋮----
+def compute_iou(self, box1, box2)
+⋮----
+box1_polygon = self.sub_area_to_polygon(box1)
+box2_polygon = self.sub_area_to_polygon(box2)
+intersection = box1_polygon.intersection(box2_polygon)
+⋮----
+union_area = (box1_polygon.area + box2_polygon.area - intersection.area)
+⋮----
+intersection_area_rate = intersection.area / union_area
+⋮----
+intersection_area_rate = 0
+⋮----
+def get_area_max_box_dict(self, sub_frame_no_list_continuous, subtitle_frame_no_box_dict)
+⋮----
+_area_max_box_dict = dict()
+⋮----
+# 寻找面积最大文本框
+current_no = start_no
+# 查找当前区间矩形框最大面积
+area_max_box_list = []
+⋮----
+# 取出每一个文本框坐标
+⋮----
+# 计算当前文本框坐标面积
+current_area = abs(xmax - xmin) * abs(ymax - ymin)
+# 如果区间最大框列表为空，则当前面积为区间最大面积
+⋮----
+# 如果列表非空，判断当前文本框是与区间最大文本框在同一区域
+⋮----
+has_same_position = False
+# 遍历每个区间最大文本框，判断当前文本框位置是否与区间最大文本框列表的某个文本框位于同一行且交叉
+⋮----
+# 如果高度差异不一样
+⋮----
+has_same_position = True
+# 如果在同一行，则计算当前面积是不是最大
+# 判断面积大小，若当前面积更大，则将当前行的最大区域坐标点更新
+⋮----
+# 如果遍历了所有的区间最大文本框列表，发现是新的一行，则直接添加
+⋮----
+new_large_area = {
+⋮----
+_area_max_box_list = list()
+⋮----
+def get_subtitle_frame_no_box_dict_with_united_coordinates(self, subtitle_frame_no_box_dict)
+⋮----
+"""
+        将多个视频帧的文本区域坐标统一
+        """
+subtitle_frame_no_box_dict_with_united_coordinates = dict()
+frame_no_list = self.find_continuous_ranges_with_same_mask(subtitle_frame_no_box_dict)
+area_max_box_dict = self.get_area_max_box_dict(frame_no_list, subtitle_frame_no_box_dict)
+⋮----
+area_max_box_list = area_max_box_dict[f'{start_no}->{end_no}']
+current_boxes = subtitle_frame_no_box_dict[current_no]
+new_subtitle_frame_no_box_list = []
+⋮----
+large_xmin = max_box['xmin']
+large_xmax = max_box['xmax']
+large_ymin = max_box['ymin']
+large_ymax = max_box['ymax']
+box1 = (current_xmin, current_xmax, current_ymin, current_ymax)
+box2 = (large_xmin, large_xmax, large_ymin, large_ymax)
+res = self.compute_iou(box1, box2)
+⋮----
+new_subtitle_frame_no_box = (large_xmin, large_xmax, large_ymin, large_ymax)
+⋮----
+def prevent_missed_detection(self, subtitle_frame_no_box_dict)
+⋮----
+"""
+        添加额外的文本框，防止漏检
+        """
+⋮----
+current_box_list = subtitle_frame_no_box_dict[current_no]
+⋮----
+next_box_list = subtitle_frame_no_box_dict[current_no + 1]
+⋮----
+@staticmethod
+    def get_frequency_in_range(sub_frame_no_list_continuous, subtitle_frame_no_box_dict)
+⋮----
+sub_area_with_frequency = {}
+⋮----
+def filter_mistake_sub_area(self, subtitle_frame_no_box_dict, fps)
+⋮----
+"""
+        过滤错误的字幕区域
+        """
+sub_frame_no_list_continuous = self.find_continuous_ranges_with_same_mask(subtitle_frame_no_box_dict)
+sub_area_with_frequency = self.get_frequency_in_range(sub_frame_no_list_continuous, subtitle_frame_no_box_dict)
+correct_sub_area = []
+⋮----
+correct_subtitle_frame_no_box_dict = dict()
+⋮----
+current_box_list = subtitle_frame_no_box_dict[frame_no]
+new_box_list = []
+⋮----
+class SubtitleRemover
+⋮----
+def __init__(self, vd_path, sub_area=None, gui_mode=False)
+⋮----
+# 线程锁
+⋮----
+# 用户指定的字幕区域位置
+⋮----
+# 是否为gui运行，gui运行需要显示预览
+⋮----
+# 判断是否为图片
+⋮----
+# 视频路径
+⋮----
+# 通过视频路径获取视频名称
+⋮----
+# 视频帧总数
+⋮----
+# 视频帧率
+⋮----
+# 视频尺寸
+⋮----
+# 创建字幕检测对象
+⋮----
+# 创建视频临时对象，windows下delete=True会有permission denied的报错
+⋮----
+# 创建视频写对象
+⋮----
+pic_dir = os.path.join(os.path.dirname(self.video_path), 'no_sub')
+⋮----
+# 总处理进度
+⋮----
+# 预览帧
+⋮----
+# 是否将原音频嵌入到去除字幕后的视频
+⋮----
+@staticmethod
+    def is_current_frame_no_start(frame_no, continuous_frame_no_list)
+⋮----
+"""
+        判断给定的帧号是否为开头，是的话返回结束帧号，不是的话返回-1
+        """
+⋮----
+@staticmethod
+    def find_frame_no_end(frame_no, continuous_frame_no_list)
+⋮----
+def update_progress(self, tbar, increment)
+⋮----
+current_percentage = (tbar.n / tbar.total) * 100
+⋮----
+def propainter_mode(self, tbar)
+⋮----
+sub_list = self.sub_detector.find_subtitle_frame_no(sub_remover=self)
+continuous_frame_no_list = self.sub_detector.find_continuous_ranges_with_same_mask(sub_list)
+scene_div_points = self.sub_detector.get_scene_div_frame_no(self.video_path)
+continuous_frame_no_list = self.sub_detector.split_range_by_scene(continuous_frame_no_list,
+⋮----
+index = 0
+⋮----
+# 如果当前帧没有水印/文本则直接写
+⋮----
+# 如果有水印，判断该帧是不是开头帧
+⋮----
+# 如果是开头帧，则批推理到尾帧
+⋮----
+# print(f'No 1 Current index: {index}')
+start_frame_no = index
+⋮----
+# 找到结束帧
+end_frame_no = self.find_frame_no_end(index, continuous_frame_no_list)
+# 判断当前帧号是不是字幕起始位置
+# 如果获取的结束帧号不为-1则说明
+⋮----
+# ************ 读取该区间所有帧 start ************
+temp_frames = list()
+# 将头帧加入处理列表
+⋮----
+inner_index = 0
+# 一直读取到尾帧
+⋮----
+# ************ 读取该区间所有帧 end ************
+⋮----
+# 没有待处理，直接跳过
+⋮----
+single_mask = create_mask(self.mask_size, sub_list[index])
+⋮----
+inpainted_frame = self.lama_inpaint(frame, single_mask)
+⋮----
+# 将读取的视频帧分批处理
+# 1. 获取当前批次使用的mask
+mask = create_mask(self.mask_size, sub_list[start_frame_no])
+⋮----
+# 2. 调用批推理
+⋮----
+single_mask = create_mask(self.mask_size, sub_list[start_frame_no])
+⋮----
+inpainted_frames = self.video_inpaint.inpaint(batch, mask)
+⋮----
+def sttn_mode_with_no_detection(self, tbar)
+⋮----
+"""
+        使用sttn对选中区域进行重绘，不进行字幕检测
+        """
+⋮----
+mask_area_coordinates = [(xmin, xmax, ymin, ymax)]
+mask = create_mask(self.mask_size, mask_area_coordinates)
+sttn_video_inpaint = STTNVideoInpaint(self.video_path)
+⋮----
+def sttn_mode(self, tbar)
+⋮----
+# 是否跳过字幕帧寻找
+⋮----
+# 若跳过则世界使用sttn模式
+⋮----
+sttn_inpaint = STTNInpaint()
+⋮----
+continuous_frame_no_list = self.sub_detector.filter_and_merge_intervals(continuous_frame_no_list)
+⋮----
+start_end_map = dict()
+⋮----
+current_frame_index = 0
+⋮----
+# 如果读取到为，则结束
+⋮----
+# 判断当前帧号是不是字幕区间开始, 如果不是，则直接写
+⋮----
+# 如果是区间开始，则找到尾巴
+⋮----
+start_frame_index = current_frame_index
+end_frame_index = start_end_map[current_frame_index]
+⋮----
+# 用于存储需要去字幕的视频帧
+frames_need_inpaint = list()
+⋮----
+# 接着往下读，直到读取到尾巴
+⋮----
+mask_area_coordinates = []
+# 1. 获取当前批次的mask坐标全集
+⋮----
+# 判断是不是非字幕区域(如果宽大于长，则认为是错误检测)
+⋮----
+inpainted_frames = sttn_inpaint(batch, mask)
+⋮----
+def lama_mode(self, tbar)
+⋮----
+original_frame = frame
+⋮----
+mask = create_mask(self.mask_size, sub_list[index])
+⋮----
+frame = cv2.inpaint(frame, mask, 3, cv2.INPAINT_TELEA)
+⋮----
+frame = self.lama_inpaint(frame, mask)
+⋮----
+def run(self)
+⋮----
+# 记录开始时间
+start_time = time.time()
+# 重置进度条
+⋮----
+tbar = tqdm(total=int(self.frame_count), unit='frame', position=0, file=sys.__stdout__,
+⋮----
+original_frame = cv2.imread(self.video_path)
+⋮----
+mask = create_mask(original_frame.shape[0:2], sub_list[1])
+inpainted_frame = self.lama_inpaint(original_frame, mask)
+⋮----
+inpainted_frame = original_frame
+⋮----
+# 精准模式下，获取场景分割的帧号，进一步切割
+⋮----
+# 将原音频合并到新生成的视频文件中
+⋮----
+def merge_audio_to_video(self)
+⋮----
+# 创建音频临时对象，windows下delete=True会有permission denied的报错
+temp = tempfile.NamedTemporaryFile(suffix='.aac', delete=False)
+audio_extract_command = [config.FFMPEG_PATH,
+use_shell = True if os.name == "nt" else False
+⋮----
+audio_merge_command = [config.FFMPEG_PATH,
+⋮----
+# 1. 提示用户输入视频路径
+video_path = input(f"Please input video or image file path: ").strip()
+# 判断视频路径是不是一个目录，是目录的化，批量处理改目录下的所有视频文件
+# 2. 按以下顺序传入字幕区域
+# sub_area = (ymin, ymax, xmin, xmax)
+# 3. 新建字幕提取对象
+⋮----
+sd = SubtitleRemover(video_path, sub_area=None)
+</file>
+
+<file path="README.md">
+简体中文 | [English](README_en.md)
+
+## 项目简介
+
+![License](https://img.shields.io/badge/License-Apache%202-red.svg)
+![python version](https://img.shields.io/badge/Python-3.11+-blue.svg)
+![support os](https://img.shields.io/badge/OS-Windows/macOS/Linux-green.svg)  
+
+Video-subtitle-remover (VSR) 是一款基于AI技术，将视频中的硬字幕去除的软件。
+主要实现了以下功能：
+- **无损分辨率**将视频中的硬字幕去除，生成去除字幕后的文件
+- 通过超强AI算法模型，对去除字幕文本的区域进行填充（非相邻像素填充与马赛克去除）
+- 支持自定义字幕位置，仅去除定义位置中的字幕（传入位置）
+- 支持全视频自动去除所有文本（不传入位置）
+- 支持多选图片批量去除水印文本
+
+<p style="text-align:center;"><img src="https://github.com/YaoFANGUK/video-subtitle-remover/raw/main/design/demo.png" alt="demo.png"/></p>
+
+**使用说明：**
+
+- 有使用问题请加群讨论，QQ群：210150985（已满）、806152575（已满）、816881808（已满）、295894827
+- 直接下载压缩包解压运行，如果不能运行再按照下面的教程，尝试源码安装conda环境运行
+
+**下载地址：**
+
+Windows GPU版本v1.1.0（GPU）：
+
+- 百度网盘:  <a href="https://pan.baidu.com/s/1zR6CjRztmOGBbOkqK8R1Ng?pwd=vsr1">vsr_windows_gpu_v1.1.0.zip</a> 提取码：**vsr1**
+
+- Google Drive:  <a href="https://drive.google.com/drive/folders/1NRgLNoHHOmdO4GxLhkPbHsYfMOB_3Elr?usp=sharing">vsr_windows_gpu_v1.1.0.zip</a>
+
+**预构建包对比说明**：
+|       预构建包名          | Python  | Paddle | Torch | 环境                          | 支持的计算能力范围|
+|---------------|------------|--------------|--------------|-----------------------------|----------|
+| `vsr-windows-directml.7z`  | 3.12       | 3.0.0       | 2.4.1       | Windows 非Nvidia显卡             | 通用 |
+| `vsr-windows-nvidia-cuda-11.8.7z` | 3.12       | 3.0.0        | 2.7.0       | CUDA 11.8   | 3.5 – 8.9 |
+| `vsr-windows-nvidia-cuda-12.6.7z` | 3.12       | 3.0.0       | 2.7.0       | CUDA 12.6   | 5.0 – 8.9 |
+| `vsr-windows-nvidia-cuda-12.8.7z` | 3.12       | 3.0.0       | 2.7.0       | CUDA 12.8   | 5.0 – 9.0+ |
+
+> NVIDIA官方提供了各GPU型号的计算能力列表，您可以参考链接: [CUDA GPUs](https://developer.nvidia.com/cuda-gpus) 查看你的GPU适合哪个CUDA版本
+
+**Docker版本：**
+```shell
+  # Nvidia 10 20 30系显卡
+  docker run -it --name vsr --gpus all eritpchy/video-subtitle-remover:1.1.1-cuda11.8
+
+  # Nvidia 40系显卡
+  docker run -it --name vsr --gpus all eritpchy/video-subtitle-remover:1.1.1-cuda12.6
+
+  # Nvidia 50系显卡
+  docker run -it --name vsr --gpus all eritpchy/video-subtitle-remover:1.1.1-cuda12.8
+
+  # AMD / Intel 独显 集显
+  docker run -it --name vsr --gpus all eritpchy/video-subtitle-remover:1.1.1-directml
+
+  # 演示视频, 输入
+  /vsr/test/test.mp4
+  docker cp vsr:/vsr/test/test_no_sub.mp4 ./
+```
+
+## 演示
+
+- GUI版：
+
+<p style="text-align:center;"><img src="https://github.com/YaoFANGUK/video-subtitle-remover/raw/main/design/demo2.gif" alt="demo2.gif"/></p>
+
+- <a href="https://b23.tv/guEbl9C">点击查看演示视频👇</a>
+
+<p style="text-align:center;"><a href="https://b23.tv/guEbl9C"><img src="https://github.com/YaoFANGUK/video-subtitle-remover/raw/main/design/demo.gif" alt="demo.gif"/></a></p>
+
+## 源码使用说明
+
+
+#### 1. 安装 Python
+
+请确保您已经安装了 Python 3.12+。
+
+- Windows 用户可以前往 [Python 官网](https://www.python.org/downloads/windows/) 下载并安装 Python。
+- MacOS 用户可以使用 Homebrew 安装：
+  ```shell
+  brew install python@3.12
+  ```
+- Linux 用户可以使用包管理器安装，例如 Ubuntu/Debian：
+  ```shell
+  sudo apt update && sudo apt install python3.12 python3.12-venv python3.12-dev
+  ```
+
+#### 2. 安装依赖文件
+
+请使用虚拟环境来管理项目依赖，避免与系统环境冲突。
+
+（1）创建虚拟环境并激活
+```shell
+python -m venv videoEnv
+```
+
+- Windows：
+```shell
+videoEnv\\Scripts\\activate
+```
+- MacOS/Linux：
+```shell
+source videoEnv/bin/activate
+```
+
+#### 3. 创建并激活项目目录
+
+切换到源码所在目录：
+```shell
+cd <源码所在目录>
+```
+> 例如：如果您的源代码放在 D 盘的 tools 文件夹下，并且源代码的文件夹名为 video-subtitle-remover，则输入：
+> ```shell
+> cd D:/tools/video-subtitle-remover-main
+> ```
+
+#### 4. 安装合适的运行环境
+
+本项目支持 CUDA（NVIDIA显卡加速）和 DirectML（AMD、Intel等GPU/APU加速）两种运行模式。
+
+##### (1) CUDA（NVIDIA 显卡用户）
+
+> 请确保您的 NVIDIA 显卡驱动支持所选 CUDA 版本。
+
+- 推荐 CUDA 11.8，对应 cuDNN 8.6.0。
+
+- 安装 CUDA：
+  - Windows：[CUDA 11.8 下载](https://developer.download.nvidia.com/compute/cuda/11.8.0/local_installers/cuda_11.8.0_522.06_windows.exe)
+  - Linux：
+    ```shell
+    wget https://developer.download.nvidia.com/compute/cuda/11.8.0/local_installers/cuda_11.8.0_520.61.05_linux.run
+    sudo sh cuda_11.8.0_520.61.05_linux.run
+    ```
+  - MacOS 不支持 CUDA。
+
+- 安装 cuDNN（CUDA 11.8 对应 cuDNN 8.6.0）：
+  - [Windows cuDNN 8.6.0 下载](https://developer.download.nvidia.cn/compute/redist/cudnn/v8.6.0/local_installers/11.8/cudnn-windows-x86_64-8.6.0.163_cuda11-archive.zip)
+  - [Linux cuDNN 8.6.0 下载](https://developer.download.nvidia.cn/compute/redist/cudnn/v8.6.0/local_installers/11.8/cudnn-linux-x86_64-8.6.0.163_cuda11-archive.tar.xz)
+  - 安装方法请参考 NVIDIA 官方文档。
+
+- 安装 PaddlePaddle GPU 版本（CUDA 11.8）：
+  ```shell
+  pip install paddlepaddle-gpu==3.0.0 -i https://www.paddlepaddle.org.cn/packages/stable/cu118/
+  ```
+- 安装 Torch GPU 版本（CUDA 11.8）：
+  ```shell
+  pip install torch==2.7.0 torchvision==0.22.0 --index-url https://download.pytorch.org/whl/cu118
+  ```
+
+- 安装其他依赖
+  ```shell
+  pip install -r requirements.txt
+  ```
+
+##### (2) DirectML（AMD、Intel等GPU/APU加速卡用户）
+
+- 适用于 Windows 设备的 AMD/NVIDIA/Intel GPU。
+- 安装 ONNX Runtime DirectML 版本：
+  ```shell
+  pip install paddlepaddle==3.0.0 -i https://www.paddlepaddle.org.cn/packages/stable/cpu/
+  pip install -r requirements.txt
+  pip install torch_directml==0.2.5.dev240914
+  ```
+
+
+#### 4. 运行程序
+
+- 运行图形化界面
+
+```shell
+python gui.py
+```
+
+- 运行命令行版本(CLI)
+
+```shell
+python ./backend/main.py
+```
+
+## 常见问题
+1. 提取速度慢怎么办
+
+修改backend/config.py中的参数，可以大幅度提高去除速度
+```python
+MODE = InpaintMode.STTN  # 设置为STTN算法
+STTN_SKIP_DETECTION = True # 跳过字幕检测，跳过后可能会导致要去除的字幕遗漏或者误伤不需要去除字幕的视频帧
+```
+
+2. 视频去除效果不好怎么办
+
+修改backend/config.py中的参数，尝试不同的去除算法，算法介绍
+
+> - InpaintMode.STTN 算法：对于真人视频效果较好，速度快，可以跳过字幕检测
+> - InpaintMode.LAMA 算法：对于图片效果最好，对动画类视频效果好，速度一般，不可以跳过字幕检测
+> - InpaintMode.PROPAINTER 算法： 需要消耗大量显存，速度较慢，对运动非常剧烈的视频效果较好
+
+- 使用STTN算法
+
+```python
+MODE = InpaintMode.STTN  # 设置为STTN算法
+# 相邻帧数, 调大会增加显存占用，效果变好
+STTN_NEIGHBOR_STRIDE = 10
+# 参考帧长度, 调大会增加显存占用，效果变好
+STTN_REFERENCE_LENGTH = 10
+# 设置STTN算法最大同时处理的帧数量，设置越大速度越慢，但效果越好
+# 要保证STTN_MAX_LOAD_NUM大于STTN_NEIGHBOR_STRIDE和STTN_REFERENCE_LENGTH
+STTN_MAX_LOAD_NUM = 30
+```
+- 使用LAMA算法
+```python
+MODE = InpaintMode.LAMA  # 设置为STTN算法
+LAMA_SUPER_FAST = False  # 保证效果
+```
+
+> 如果对模型去字幕的效果不满意，可以查看design文件夹里面的训练方法，利用backend/tools/train里面的代码进行训练，然后将训练的模型替换旧模型即可
+
+3. CondaHTTPError
+
+将项目中的.condarc放在用户目录下(C:/Users/<你的用户名>)，如果用户目录已经存在该文件则覆盖
+
+解决方案：https://zhuanlan.zhihu.com/p/260034241
+
+4. 7z文件解压错误
+
+解决方案：升级7-zip解压程序到最新版本
+
+
+## 赞助
+
+<img src="https://github.com/YaoFANGUK/video-subtitle-extractor/raw/main/design/sponsor.png" width="600">
+
+| 捐赠者                       | 累计捐赠金额     | 赞助席位 |
+|---------------------------|------------| --- |
+| 坤V                        | 400.00 RMB | 金牌赞助席位 |
+| Jenkit                        | 200.00 RMB | 金牌赞助席位 |
+| 子车松兰                        | 188.00 RMB | 金牌赞助席位 |
+| 落花未逝                        | 100.00 RMB | 金牌赞助席位 |
+| 张音乐                        | 100.00 RMB | 金牌赞助席位 |
+| 麦格                        | 100.00 RMB | 金牌赞助席位 |
+| 无痕                        | 100.00 RMB | 金牌赞助席位 |
+| wr                        | 100.00 RMB | 金牌赞助席位 |
+| 陈                        | 100.00 RMB | 金牌赞助席位 |
+| lyons                        | 100.00 RMB | 金牌赞助席位 |
+| TalkLuv                   | 50.00 RMB  | 银牌赞助席位 |
+| 陈凯                        | 50.00 RMB  | 银牌赞助席位 |
+| Tshuang                   | 20.00 RMB  | 银牌赞助席位 |
+| 很奇异                       | 15.00 RMB  | 银牌赞助席位 |
+| 郭鑫                       | 12.00 RMB  | 银牌赞助席位 |
+| 生活不止眼前的苟且                        | 10.00 RMB  | 铜牌赞助席位 |
+| 何斐                        | 10.00 RMB  | 铜牌赞助席位 |
+| 老猫                        | 8.80 RMB   | 铜牌赞助席位 |
+| 伍六七                      | 7.77 RMB   | 铜牌赞助席位 |
+| 长缨在手                      | 6.00 RMB   | 铜牌赞助席位 |
+| 无忌                      | 6.00 RMB   | 铜牌赞助席位 |
+| Stephen                   | 2.00 RMB   | 铜牌赞助席位 |
+| Leo                       | 1.00 RMB   | 铜牌赞助席位 |
+</file>
+
+</files>
